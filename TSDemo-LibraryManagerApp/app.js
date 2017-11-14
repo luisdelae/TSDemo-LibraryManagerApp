@@ -47,7 +47,16 @@ function GetBookById(id) {
     const allBooks = GetAllBooks();
     return allBooks.filter(book => book.id === id)[0];
 }
+function CreatureCustomerId(name, id) {
+    return name + id;
+}
 //*********************************************************************************
+let x;
+x = 5;
+let IdGenerator;
+IdGenerator = (name, id) => { return id + name; };
+let myId = IdGenerator('Danel ', 15);
+console.log(myId);
 const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
 fictionBooks.forEach((val, idx, arr) => console.log(++idx + ' - ' + val));
 //# sourceMappingURL=app.js.map
