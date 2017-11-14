@@ -9,7 +9,7 @@
     return books;
 }
 
-function LogsFirstAvailable(books): void {
+function LogsFirstAvailable(books = GetAllBooks()): void {
     let numberOfBooks: number = books.length;
     let firstAvailable: string = '';
 
@@ -27,7 +27,7 @@ function LogsFirstAvailable(books): void {
 
 enum Category { Bigraphy, Poetry, Fiction, History, Children }
 
-function GetBookTitlesByCategory(categoryFilter: Category): Array<string> {
+function GetBookTitlesByCategory(categoryFilter: Category = Category.Fiction): Array<string> {
     console.log('Getting books in category: ', Category[categoryFilter]);
 
     const allBooks = GetAllBooks();
@@ -57,17 +57,57 @@ function CreatureCustomerId(name: string, id: number): string {
     return name + id;
 }
 
+
+function CreateCustomer(name: string, age?: number, city?: string): void {
+    console.log('Creating customer: ', name);
+
+    if (age) {
+        console.log('Age: ', age);
+    }
+
+    if (city) {
+        console.log('City: ', city);
+    }
+} 
+
+function CheckoutBooks(customer: string, ...bookIds: number[]): Array<string> {
+
+    console.log('Checking out books for ', customer);
+
+    let booksCheckedOut: Array<string> = [];
+
+    for (let id of bookIds) {
+        let book = GetBookById(id);
+        if (book.available) {
+            booksCheckedOut.push(book.title);
+        }
+    }
+
+    return booksCheckedOut;
+}
 //*********************************************************************************
 
-let x: number;
-x = 5;
+let myBooks: Array<string> = CheckoutBooks('James', 1, 4, 2);
+myBooks.forEach(title => console.log(title));
 
-let IdGenerator: (chars: string, numbs: number) => string;
-IdGenerator = (name: string, id: number) => { return id + name; }
+//LogsFirstAvailable();
 
-let myId: string = IdGenerator('Danel ', 15);
-console.log(myId);
+//let fictionBooks = GetBookTitlesByCategory();
+//fictionBooks.forEach(title => console.log(title));
+
+//CreateCustomer('Luis');
+//CreateCustomer('Luis', 27);
+//CreateCustomer('Luis', 27, 'SomeCity');
+
+//let x: number;
+//x = 5;
+
+//let IdGenerator: (chars: string, numbs: number) => string;
+//IdGenerator = (name: string, id: number) => { return id + name; }
+
+//let myId: string = IdGenerator('Danel ', 15);
+//console.log(myId);
 
 
-const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
-fictionBooks.forEach((val, idx, arr) => console.log(++idx + ' - ' + val));
+//const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
+//fictionBooks.forEach((val, idx, arr) => console.log(++idx + ' - ' + val));
