@@ -1,0 +1,10 @@
+{
+  "name": "tsdemo-library-manager-app",
+  "version": "0.0.0",
+  "description": "TSDemo-LibraryManagerApp",
+  "main": "app.js",
+  "author": {
+    "name": "Luisdela",
+    "email": ""
+  }
+}
