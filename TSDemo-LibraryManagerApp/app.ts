@@ -1,6 +1,6 @@
 ﻿import { Category } from './Modules/enums';
 import { IBook, IDamageLogger, IAuthor, ILibrarian } from './Modules/interfaces';
-import { UniversityLibrarian } from './Modules/Classes';
+import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './Modules/Classes';
 
 function GetAllBooks(): IBook[] {
     let books = [
@@ -120,9 +120,18 @@ function PrintBook(book: IBook): void {
 
 //*********************************************************************************
 
-let favoriteLibrarian: ILibrarian = new UniversityLibrarian();
-favoriteLibrarian.name = 'Sharon';
-favoriteLibrarian.assistCustomer('Lynda');
+let refBoook = new Encyclopedia('WorldPedia', 1900, 10);
+refBoook.printItem();
+
+//let ref: ReferenceItem = new ReferenceItem('New Facts and Figures', 2016);
+//ref.printItem();
+
+//ref.publisher = 'Random Data Publishing';
+//console.log(ref.publisher);
+
+//let favoriteLibrarian: ILibrarian = new UniversityLibrarian();
+//favoriteLibrarian.name = 'Sharon';
+//favoriteLibrarian.assistCustomer('Lynda');
 
 //Duck Typing:
 //let myBook: IBook = {
