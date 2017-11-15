@@ -1,42 +1,66 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-class UniversityLibrarian {
-    assistCustomer(custName) {
-        console.log(this.name + ' is assisting ' + custName);
+var UniversityLibrarian = /** @class */ (function () {
+    function UniversityLibrarian() {
     }
-}
+    UniversityLibrarian.prototype.assistCustomer = function (custName) {
+        console.log(this.name + ' is assisting ' + custName);
+    };
+    return UniversityLibrarian;
+}());
 exports.UniversityLibrarian = UniversityLibrarian;
-class ReferenceItem {
-    constructor(title, year) {
+var ReferenceItem = /** @class */ (function () {
+    function ReferenceItem(title, year) {
         this.title = title;
         this.year = year;
         console.log('Creating a new ReferenceItem...');
     }
-    printItem() {
-        console.log(`${this.title} was published in ${this.year}.`);
-        console.log(`Department: ${ReferenceItem.department}`);
-    }
-    get publisher() {
-        return this._publisher.toUpperCase();
-    }
-    set publisher(newPublisher) {
-        this._publisher = newPublisher;
-    }
-}
-ReferenceItem.department = 'Research';
+    ReferenceItem.prototype.printItem = function () {
+        console.log(this.title + " was published in " + this.year + ".");
+        console.log("Department: " + ReferenceItem.department);
+    };
+    Object.defineProperty(ReferenceItem.prototype, "publisher", {
+        get: function () {
+            return this._publisher.toUpperCase();
+        },
+        set: function (newPublisher) {
+            this._publisher = newPublisher;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ReferenceItem.department = 'Research';
+    return ReferenceItem;
+}());
 exports.ReferenceItem = ReferenceItem;
-class Encyclopedia extends ReferenceItem {
-    constructor(newTitle, newYear, edition) {
-        super(newTitle, newYear);
-        this.edition = edition;
+var Encyclopedia = /** @class */ (function (_super) {
+    __extends(Encyclopedia, _super);
+    function Encyclopedia(newTitle, newYear, edition) {
+        var _this = _super.call(this, newTitle, newYear) || this;
+        _this.edition = edition;
+        return _this;
     }
-    printItem() {
+    Encyclopedia.prototype.printItem = function () {
         //This calls the original printItem from the inherited class
         //Don't actually need this is you only want to override it
-        super.printItem();
+        _super.prototype.printItem.call(this);
         //This adds functionality to printItem for this class only
-        console.log(`Edtion: ${this.edition} (${this.year})`);
-    }
-}
+        console.log("Edtion: " + this.edition + " (" + this.year + ")");
+    };
+    Encyclopedia.prototype.printCitation = function () {
+        console.log(this.title + " - " + this.year);
+    };
+    return Encyclopedia;
+}(ReferenceItem));
 exports.Encyclopedia = Encyclopedia;
 //# sourceMappingURL=Classes.js.map

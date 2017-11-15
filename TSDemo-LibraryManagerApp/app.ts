@@ -120,8 +120,8 @@ function PrintBook(book: IBook): void {
 
 //*********************************************************************************
 
-let refBoook = new Encyclopedia('WorldPedia', 1900, 10);
-refBoook.printItem();
+let refBoook: ReferenceItem = new Encyclopedia('WorldPedia', 1900, 10);
+refBoook.printCitation();
 
 //let ref: ReferenceItem = new ReferenceItem('New Facts and Figures', 2016);
 //ref.printItem();
