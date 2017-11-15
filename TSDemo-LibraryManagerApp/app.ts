@@ -120,8 +120,22 @@ function PrintBook(book: IBook): void {
 
 //*********************************************************************************
 
-let refBoook: ReferenceItem = new Encyclopedia('WorldPedia', 1900, 10);
-refBoook.printCitation();
+let Newspaper = class extends ReferenceItem {
+    printCitation(): void {
+        console.log(`Newspape: ${this.title}`);
+    }
+}
+
+let myPaper = new Newspaper('The Gazetter', 2016);
+myPaper.printCitation();
+
+class Novel extends class { title: string } {
+    mainCharacter: string;
+}
+
+
+//let refBoook: ReferenceItem = new Encyclopedia('WorldPedia', 1900, 10);
+//refBoook.printCitation();
 
 //let ref: ReferenceItem = new ReferenceItem('New Facts and Figures', 2016);
 //ref.printItem();

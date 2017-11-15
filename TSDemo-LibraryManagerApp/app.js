@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var enums_1 = require("./Modules/enums");
-var Classes_1 = require("./Modules/Classes");
+const enums_1 = require("./Modules/enums");
+const Classes_1 = require("./Modules/Classes");
 function GetAllBooks() {
-    var books = [
+    let books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Fiction },
         { id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: enums_1.Category.Fiction },
         { id: 3, title: 'I Know Why the Caged Bird Sings', author: 'Maya Angelou', available: true, category: enums_1.Category.Poetry },
@@ -11,12 +11,10 @@ function GetAllBooks() {
     ];
     return books;
 }
-function LogsFirstAvailable(books) {
-    if (books === void 0) { books = GetAllBooks(); }
-    var numberOfBooks = books.length;
-    var firstAvailable = '';
-    for (var _i = 0, books_1 = books; _i < books_1.length; _i++) {
-        var currentBook = books_1[_i];
+function LogsFirstAvailable(books = GetAllBooks()) {
+    let numberOfBooks = books.length;
+    let firstAvailable = '';
+    for (let currentBook of books) {
         if (currentBook.available) {
             firstAvailable = currentBook.title;
             break;
@@ -25,13 +23,11 @@ function LogsFirstAvailable(books) {
     console.log('Total Books: ', numberOfBooks);
     console.log('First Available: ', firstAvailable);
 }
-function GetBookTitlesByCategory(categoryFilter) {
-    if (categoryFilter === void 0) { categoryFilter = enums_1.Category.Fiction; }
+function GetBookTitlesByCategory(categoryFilter = enums_1.Category.Fiction) {
     console.log('Getting books in category: ', enums_1.Category[categoryFilter]);
-    var allBooks = GetAllBooks();
-    var filteredTitles = [];
-    for (var _i = 0, allBooks_1 = allBooks; _i < allBooks_1.length; _i++) {
-        var currentBook = allBooks_1[_i];
+    const allBooks = GetAllBooks();
+    const filteredTitles = [];
+    for (let currentBook of allBooks) {
         if (currentBook.category === categoryFilter) {
             filteredTitles.push(currentBook.title);
         }
@@ -39,14 +35,13 @@ function GetBookTitlesByCategory(categoryFilter) {
     return filteredTitles;
 }
 function LogBookTitles(titles) {
-    for (var _i = 0, titles_1 = titles; _i < titles_1.length; _i++) {
-        var title = titles_1[_i];
+    for (let title of titles) {
         console.log(title);
     }
 }
 function GetBookById(id) {
-    var allBooks = GetAllBooks();
-    return allBooks.filter(function (book) { return book.id === id; })[0];
+    const allBooks = GetAllBooks();
+    return allBooks.filter(book => book.id === id)[0];
 }
 function CreatureCustomerId(name, id) {
     return name + id;
@@ -60,16 +55,11 @@ function CreateCustomer(name, age, city) {
         console.log('City: ', city);
     }
 }
-function CheckoutBooks(customer) {
-    var bookIds = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        bookIds[_i - 1] = arguments[_i];
-    }
+function CheckoutBooks(customer, ...bookIds) {
     console.log('Checking out books for ', customer);
-    var booksCheckedOut = [];
-    for (var _a = 0, bookIds_1 = bookIds; _a < bookIds_1.length; _a++) {
-        var id = bookIds_1[_a];
-        var book = GetBookById(id);
+    let booksCheckedOut = [];
+    for (let id of bookIds) {
+        let book = GetBookById(id);
         if (book.available) {
             booksCheckedOut.push(book.title);
         }
@@ -77,20 +67,18 @@ function CheckoutBooks(customer) {
     return booksCheckedOut;
 }
 function GetTitles(bookProperty) {
-    var allBooks = GetAllBooks();
-    var foundTitles = [];
+    const allBooks = GetAllBooks();
+    const foundTitles = [];
     if (typeof bookProperty == 'string') {
         //get all books by a particular author
-        for (var _i = 0, allBooks_2 = allBooks; _i < allBooks_2.length; _i++) {
-            var book = allBooks_2[_i];
+        for (let book of allBooks) {
             if (book.author === bookProperty) {
                 foundTitles.push(book.title);
             }
         }
     }
     else if (typeof bookProperty == 'boolean') {
-        for (var _a = 0, allBooks_3 = allBooks; _a < allBooks_3.length; _a++) {
-            var book = allBooks_3[_a];
+        for (let book of allBooks) {
             if (book.available === bookProperty) {
                 foundTitles.push(book.title);
             }
@@ -102,8 +90,18 @@ function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
 //*********************************************************************************
-var refBoook = new Classes_1.Encyclopedia('WorldPedia', 1900, 10);
-refBoook.printCitation();
+let Newspaper = class extends Classes_1.ReferenceItem {
+    printCitation() {
+        console.log(`Newspape: ${this.title}`);
+    }
+};
+let myPaper = new Newspaper('The Gazetter', 2016);
+myPaper.printCitation();
+class Novel extends class {
+} {
+}
+//let refBoook: ReferenceItem = new Encyclopedia('WorldPedia', 1900, 10);
+//refBoook.printCitation();
 //let ref: ReferenceItem = new ReferenceItem('New Facts and Figures', 2016);
 //ref.printItem();
 //ref.publisher = 'Random Data Publishing';
