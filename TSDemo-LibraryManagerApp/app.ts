@@ -1,4 +1,8 @@
-﻿function GetAllBooks() {
+﻿import { Category } from './Modules/enums';
+import { IBook, IDamageLogger, IAuthor, ILibrarian } from './Modules/interfaces';
+import { UniversityLibrarian } from './Modules/Classes';
+
+function GetAllBooks(): IBook[] {
     let books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
         { id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Fiction },
@@ -25,7 +29,6 @@ function LogsFirstAvailable(books = GetAllBooks()): void {
     console.log('First Available: ', firstAvailable);
 }
 
-enum Category { Bigraphy, Poetry, Fiction, History, Children }
 
 function GetBookTitlesByCategory(categoryFilter: Category = Category.Fiction): Array<string> {
     console.log('Getting books in category: ', Category[categoryFilter]);
@@ -48,7 +51,7 @@ function LogBookTitles(titles: Array<string>): void {
     }
 }
 
-function GetBookById(id: number) {
+function GetBookById(id: number): IBook {
     const allBooks = GetAllBooks();
     return allBooks.filter(book => book.id === id)[0];
 }
@@ -111,14 +114,42 @@ function GetTitles(bookProperty: any): Array<string> {
     return foundTitles;
 }
 
+function PrintBook(book: IBook): void {
+    console.log(book.title + ' by ' + book.author);
+}
 
 //*********************************************************************************
 
-let hermansBooks = GetTitles('Herman Melville');
-hermansBooks.forEach(title => console.log(title));
+let favoriteLibrarian: ILibrarian = new UniversityLibrarian();
+favoriteLibrarian.name = 'Sharon';
+favoriteLibrarian.assistCustomer('Lynda');
 
-let checkedOytBooks = GetTitles(false);
-checkedOytBooks.forEach(title => console.log(title));
+//Duck Typing:
+//let myBook: IBook = {
+//    id: 5,
+//    title: 'Pride and Prejudice',
+//    author: 'Jane Austen',
+//    available: true,
+//    category: Category.Fiction,
+//    pages: 250,
+//    markDamaged: (reason: string) => console.log('Damaged: ', reason)
+//    //year: '1813',
+//    //copies: 3
+//};
+
+//PrintBook(myBook);
+//myBook.markDamaged('torn pages');
+
+//let logDamage: IDamageLogger;
+
+//logDamage = (damage: string) => console.log('Damage report: ', damage);
+//logDamage('coffee stains');
+
+//let hermansBooks = GetTitles('Herman Melville');
+//hermansBooks.forEach(title => console.log(title));
+
+//let checkedOytBooks = GetTitles(false);
+//checkedOytBooks.forEach(title => console.log(title));
 
 //let myBooks: Array<string> = CheckoutBooks('James', 1, 4, 2);
 //myBooks.forEach(title => console.log(title));
