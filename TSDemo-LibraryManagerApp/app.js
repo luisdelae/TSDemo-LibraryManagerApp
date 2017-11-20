@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const enums_1 = require("./Modules/enums");
 const Classes_1 = require("./Modules/Classes");
+const utilityFunctions_1 = require("./Modules/utilityFunctions");
+let fee = utilityFunctions_1.CalculateLateFee(5);
+let max = utilityFunctions_1.MaxBooksAllowed(12);
 function GetAllBooks() {
     let books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Fiction },

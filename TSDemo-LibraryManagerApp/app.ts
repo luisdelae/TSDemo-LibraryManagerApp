@@ -1,6 +1,10 @@
 ﻿import { Category } from './Modules/enums';
 import { IBook, IDamageLogger, IAuthor, ILibrarian } from './Modules/interfaces';
 import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './Modules/Classes';
+import { CalculateLateFee as CalcFree, MaxBooksAllowed } from './Modules/utilityFunctions';
+
+let fee = CalcFree(5);
+let max = MaxBooksAllowed(12);
 
 function GetAllBooks(): IBook[] {
     let books = [
