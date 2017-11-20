@@ -6,5 +6,9 @@
   "author": {
     "name": "Luisdela",
     "email": ""
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.85",
+    "lodash": "^4.17.4"
   }
 }

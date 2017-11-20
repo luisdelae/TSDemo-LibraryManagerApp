@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var enums_1 = require("./Modules/enums");
-var Shelf_1 = require("./Modules/Shelf");
+var _ = require("lodash");
+var snakecaseTitle = _.snakeCase('For Whom the Bell Tolls');
+console.log(snakecaseTitle);
 //let ereference = new refBook('Fact Book', 2016, 1);
 //let fee = CalcFree(5);
 //let max = MaxBooksAllowed(12);
@@ -105,26 +107,26 @@ function PrintBook(book) {
     console.log(book.title + ' by ' + book.author);
 }
 //*********************************************************************************
-var inventory = [
-    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: enums_1.Category.Software },
-    { id: 10, title: 'Code Complete', author: 'Steve McConnell', available: true, category: enums_1.Category.Software },
-    { id: 10, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: enums_1.Category.Software },
-    { id: 10, title: 'Cool authoexec.bat Scripts!', author: 'C. D.', available: true, category: enums_1.Category.Software }
-];
-var bookShelf = new Shelf_1.default();
-inventory.forEach(function (book) { return bookShelf.add(book); });
-var firstBook = bookShelf.getFirst();
-var magazines = [
-    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
-    { title: 'Literary Fiction Quaretly', publisher: 'College Press' },
-    { title: 'Five Points', publisher: 'GSU' }
-];
-var magazineShelf = new Shelf_1.default();
-magazines.forEach(function (mag) { return magazineShelf.add(mag); });
-var firstMagazine = magazineShelf.getFirst();
-magazineShelf.printTitles();
-var softwareBook = bookShelf.find('Code Complete');
-console.log(softwareBook.title + " (" + softwareBook.author + ")");
+//let inventory: Array<IBook> = [
+//    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+//    { id: 10, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
+//    { id: 10, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+//    { id: 10, title: 'Cool authoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
+//];
+//let bookShelf: Shelf<IBook> = new Shelf<IBook>();
+//inventory.forEach(book => bookShelf.add(book));
+//let firstBook: IBook = bookShelf.getFirst();
+//let magazines: Array <IMagazine> = [
+//    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+//    { title: 'Literary Fiction Quaretly', publisher: 'College Press' },
+//    { title: 'Five Points', publisher: 'GSU' }
+//]
+//let magazineShelf: Shelf<IMagazine> = new Shelf<IMagazine>();
+//magazines.forEach(mag => magazineShelf.add(mag));
+//let firstMagazine: IMagazine = magazineShelf.getFirst();
+//magazineShelf.printTitles();
+//let softwareBook = bookShelf.find('Code Complete');
+//console.log(`${softwareBook.title} (${softwareBook.author})`);
 //let purgedBooks: Array<IBook> = Purge<IBook>(inventory);
 //purgedBooks.forEach(book => console.log(book.title));
 //let purgedNums: Array<number> = Purge<number>([1, 2, 3, 4]);
@@ -185,4 +187,3 @@ console.log(softwareBook.title + " (" + softwareBook.author + ")");
 //console.log(myId);
 //const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
 //fictionBooks.forEach((val, idx, arr) => console.log(++idx + ' - ' + val)); 
-//# sourceMappingURL=app.js.map

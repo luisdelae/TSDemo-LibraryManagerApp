@@ -4,6 +4,11 @@ import { UniversityLibrarian, ReferenceItem } from './Modules/Classes';
 import { CalculateLateFee as CalcFree, MaxBooksAllowed, Purge } from './Modules/utilityFunctions';
 import refBook from './Modules/Encyclopedia'
 import Shelf from './Modules/Shelf'
+import * as _ from 'lodash'
+
+let snakecaseTitle = _.snakeCase('For Whom the Bell Tolls');
+
+console.log(snakecaseTitle);
 
 //let ereference = new refBook('Fact Book', 2016, 1);
 //let fee = CalcFree(5);
@@ -127,36 +132,36 @@ function PrintBook(book: IBook): void {
 
 //*********************************************************************************
 
-let inventory: Array<IBook> = [
-    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
-    { id: 10, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
-    { id: 10, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
-    { id: 10, title: 'Cool authoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
-];
+//let inventory: Array<IBook> = [
+//    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+//    { id: 10, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
+//    { id: 10, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+//    { id: 10, title: 'Cool authoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
+//];
 
-let bookShelf: Shelf<IBook> = new Shelf<IBook>();
+//let bookShelf: Shelf<IBook> = new Shelf<IBook>();
 
-inventory.forEach(book => bookShelf.add(book));
+//inventory.forEach(book => bookShelf.add(book));
 
-let firstBook: IBook = bookShelf.getFirst();
+//let firstBook: IBook = bookShelf.getFirst();
 
-let magazines: Array <IMagazine> = [
-    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
-    { title: 'Literary Fiction Quaretly', publisher: 'College Press' },
-    { title: 'Five Points', publisher: 'GSU' }
-]
+//let magazines: Array <IMagazine> = [
+//    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+//    { title: 'Literary Fiction Quaretly', publisher: 'College Press' },
+//    { title: 'Five Points', publisher: 'GSU' }
+//]
 
-let magazineShelf: Shelf<IMagazine> = new Shelf<IMagazine>();
+//let magazineShelf: Shelf<IMagazine> = new Shelf<IMagazine>();
 
-magazines.forEach(mag => magazineShelf.add(mag));
+//magazines.forEach(mag => magazineShelf.add(mag));
 
-let firstMagazine: IMagazine = magazineShelf.getFirst();
+//let firstMagazine: IMagazine = magazineShelf.getFirst();
 
-magazineShelf.printTitles();
+//magazineShelf.printTitles();
 
-let softwareBook = bookShelf.find('Code Complete');
+//let softwareBook = bookShelf.find('Code Complete');
 
-console.log(`${softwareBook.title} (${softwareBook.author})`);
+//console.log(`${softwareBook.title} (${softwareBook.author})`);
 
 //let purgedBooks: Array<IBook> = Purge<IBook>(inventory);
 //purgedBooks.forEach(book => console.log(book.title));
