@@ -1,8 +1,10 @@
 ﻿import { Category } from './Modules/enums';
 import { IBook, Logger, IAuthor, ILibrarian } from './Modules/interfaces';
-import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './Modules/Classes';
+import { UniversityLibrarian, ReferenceItem } from './Modules/Classes';
 import { CalculateLateFee as CalcFree, MaxBooksAllowed } from './Modules/utilityFunctions';
+import refBook from './Modules/Encyclopedia'
 
+let ereference = new refBook('Fact Book', 2016, 1);
 let fee = CalcFree(5);
 let max = MaxBooksAllowed(12);
 

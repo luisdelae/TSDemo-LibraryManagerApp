@@ -39,6 +39,7 @@
     <TypeScriptCompile Include="Modules\Classes.ts" />
     <TypeScriptCompile Include="Modules\enums.ts" />
     <TypeScriptCompile Include="Modules\Interfaces.ts" />
+    <TypeScriptCompile Include="Modules\Encyclopedia.ts" />
     <TypeScriptCompile Include="Modules\utilityFunctions.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
   </ItemGroup>
