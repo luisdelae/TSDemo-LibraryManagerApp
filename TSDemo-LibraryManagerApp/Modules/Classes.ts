@@ -1,6 +1,6 @@
-﻿import { IBook, IDamageLogger, IAuthor, ILibrarian } from './interfaces';
+﻿import * as Interfaces from './interfaces';
 
-class UniversityLibrarian implements ILibrarian {
+class UniversityLibrarian implements Interfaces.ILibrarian {
     name: string;
     email: string;
     derpartment: string;

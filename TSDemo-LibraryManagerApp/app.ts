@@ -1,5 +1,5 @@
 ﻿import { Category } from './Modules/enums';
-import { IBook, IDamageLogger, IAuthor, ILibrarian } from './Modules/interfaces';
+import { IBook, Logger, IAuthor, ILibrarian } from './Modules/interfaces';
 import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './Modules/Classes';
 import { CalculateLateFee as CalcFree, MaxBooksAllowed } from './Modules/utilityFunctions';
 
