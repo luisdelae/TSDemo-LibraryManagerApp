@@ -1,28 +1,36 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class UniversityLibrarian {
-    assistCustomer(custName) {
-        console.log(this.name + ' is assisting ' + custName);
+var UniversityLibrarian = /** @class */ (function () {
+    function UniversityLibrarian() {
     }
-}
+    UniversityLibrarian.prototype.assistCustomer = function (custName) {
+        console.log(this.name + ' is assisting ' + custName);
+    };
+    return UniversityLibrarian;
+}());
 exports.UniversityLibrarian = UniversityLibrarian;
-class ReferenceItem {
-    constructor(title, year) {
+var ReferenceItem = /** @class */ (function () {
+    function ReferenceItem(title, year) {
         this.title = title;
         this.year = year;
         console.log('Creating a new ReferenceItem...');
     }
-    printItem() {
-        console.log(`${this.title} was published in ${this.year}.`);
-        console.log(`Department: ${ReferenceItem.department}`);
-    }
-    get publisher() {
-        return this._publisher.toUpperCase();
-    }
-    set publisher(newPublisher) {
-        this._publisher = newPublisher;
-    }
-}
-ReferenceItem.department = 'Research';
+    ReferenceItem.prototype.printItem = function () {
+        console.log(this.title + " was published in " + this.year + ".");
+        console.log("Department: " + ReferenceItem.department);
+    };
+    Object.defineProperty(ReferenceItem.prototype, "publisher", {
+        get: function () {
+            return this._publisher.toUpperCase();
+        },
+        set: function (newPublisher) {
+            this._publisher = newPublisher;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ReferenceItem.department = 'Research';
+    return ReferenceItem;
+}());
 exports.ReferenceItem = ReferenceItem;
 //# sourceMappingURL=Classes.js.map

@@ -1,12 +1,13 @@
 ﻿import { Category } from './Modules/enums';
-import { IBook, Logger, IAuthor, ILibrarian } from './Modules/interfaces';
+import { IBook, Logger, IAuthor, ILibrarian, IMagazine } from './Modules/interfaces';
 import { UniversityLibrarian, ReferenceItem } from './Modules/Classes';
-import { CalculateLateFee as CalcFree, MaxBooksAllowed } from './Modules/utilityFunctions';
+import { CalculateLateFee as CalcFree, MaxBooksAllowed, Purge } from './Modules/utilityFunctions';
 import refBook from './Modules/Encyclopedia'
+import Shelf from './Modules/Shelf'
 
-let ereference = new refBook('Fact Book', 2016, 1);
-let fee = CalcFree(5);
-let max = MaxBooksAllowed(12);
+//let ereference = new refBook('Fact Book', 2016, 1);
+//let fee = CalcFree(5);
+//let max = MaxBooksAllowed(12);
 
 function GetAllBooks(): IBook[] {
     let books = [
@@ -126,18 +127,56 @@ function PrintBook(book: IBook): void {
 
 //*********************************************************************************
 
-let Newspaper = class extends ReferenceItem {
-    printCitation(): void {
-        console.log(`Newspape: ${this.title}`);
-    }
-}
+let inventory: Array<IBook> = [
+    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+    { id: 10, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
+    { id: 10, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+    { id: 10, title: 'Cool authoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
+];
 
-let myPaper = new Newspaper('The Gazetter', 2016);
-myPaper.printCitation();
+let bookShelf: Shelf<IBook> = new Shelf<IBook>();
 
-class Novel extends class { title: string } {
-    mainCharacter: string;
-}
+inventory.forEach(book => bookShelf.add(book));
+
+let firstBook: IBook = bookShelf.getFirst();
+
+let magazines: Array <IMagazine> = [
+    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+    { title: 'Literary Fiction Quaretly', publisher: 'College Press' },
+    { title: 'Five Points', publisher: 'GSU' }
+]
+
+let magazineShelf: Shelf<IMagazine> = new Shelf<IMagazine>();
+
+magazines.forEach(mag => magazineShelf.add(mag));
+
+let firstMagazine: IMagazine = magazineShelf.getFirst();
+
+magazineShelf.printTitles();
+
+let softwareBook = bookShelf.find('Code Complete');
+
+console.log(`${softwareBook.title} (${softwareBook.author})`);
+
+//let purgedBooks: Array<IBook> = Purge<IBook>(inventory);
+//purgedBooks.forEach(book => console.log(book.title));
+
+//let purgedNums: Array<number> = Purge<number>([1, 2, 3, 4]);
+//console.log(purgedNums);
+
+
+//let Newspaper = class extends ReferenceItem {
+//    printCitation(): void {
+//        console.log(`Newspape: ${this.title}`);
+//    }
+//}
+
+//let myPaper = new Newspaper('The Gazetter', 2016);
+//myPaper.printCitation();
+
+//class Novel extends class { title: string } {
+//    mainCharacter: string;
+//}
 
 
 //let refBoook: ReferenceItem = new Encyclopedia('WorldPedia', 1900, 10);
